@@ -1,0 +1,14 @@
+<%= link_to 'create', new_account_path %><br>
+<div>Student</div><div>Logged in?</div><br>
+<% @accounts.each do |a| %>
+  <%= content_tag :div, a.studentnumber %>
+  <% if a.loggedin == 1 %>
+    <%= content_tag :div, 'Yes' %>
+  <% else %>
+    <%= content_tag :div, 'No' %>
+  <% end %>
+  <%= form_tag(a) %>
+  <%= hidden_field_tag('account[loggedin]', 0) %>
+  <%= submit_tag 'logout' %>
+  <%= content_tag :br %>
+<% end %>

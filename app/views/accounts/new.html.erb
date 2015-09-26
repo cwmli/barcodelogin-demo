@@ -1,0 +1,7 @@
+<%= link_to 'all', root_path %>
+<%= form_for @account do |a| %>
+      <%= a.text_field :studentnumber, placeholder: 'Student Number' %><br>
+      <%= a.password_field :password, placeholder: 'Password' %><br>
+      <%= a.password_field :password_confirmation, placeholder: 'Retype password' %><br>
+      <%= a.submit "Register" %>
+<% end %>
