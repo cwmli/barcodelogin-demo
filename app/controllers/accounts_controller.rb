@@ -6,7 +6,15 @@ class AccountsController < ApplicationController
 
   def barcodelogin
     @account = Account.find_by(studentnumber: params[:barnum])
-    @account.update_attribute(:loggedin, true)
+    if @account.update_attribute(:loggedin, true)
+        msg = { :status => "Success", :message => "#{params[:barnum].to_s} logged in.", :html => "<b>...</b>" }
+    else
+        msg = { :status => "Error", :message => "Error logging #{params[:barnum].to_s} in.", :html => "<b>...</b>" }
+    end
+
+    respond_to do |format|
+      format.json  { render :json => msg }
+    end
   end
 
   def new
