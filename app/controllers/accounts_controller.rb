@@ -12,9 +12,7 @@ class AccountsController < ApplicationController
         msg = { :status => "Error", :message => "Error logging #{params[:barnum].to_s} in.", :html => "<b>...</b>" }
     end
 
-    respond_to do |format|
-      format.json  { render :json => msg }
-    end
+    render :json => msg
   end
 
   def new
