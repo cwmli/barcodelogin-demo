@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root 'accounts#show'
 
-  resource :account
+  resources :accounts
   get 'loginapp' => 'accounts#barcodelogin'
 
   # Example of regular route:

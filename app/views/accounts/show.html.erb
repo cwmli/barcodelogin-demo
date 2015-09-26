@@ -7,8 +7,13 @@
   <% else %>
     <%= content_tag :div, 'No' %>
   <% end %>
-  <%= form_tag(a) %>
-  <%= hidden_field_tag('account[loggedin]', 0) %>
-  <%= submit_tag 'logout' %>
+  <%= form_for a do |user| %>
+  <%= user.hidden_field(:loggedin, value: 0) %>
+    <% if a.loggedin == 0 || a.loggedin.nil? %>
+      <%= user.submit 'LOGOUT', :disabled => 'disabled' %>
+    <% else %>
+      <%= user.submit 'LOGOUT' %>
+    <% end %>
   <%= content_tag :br %>
+  <% end %>
 <% end %>
